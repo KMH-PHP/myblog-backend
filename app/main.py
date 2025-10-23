@@ -41,3 +41,13 @@ def read_blogs(db: db_dependency):
 def create_blog_for_user(user_id: int, blog: schema.BlogCreate, db: db_dependency):
     return crud.create_blog(db=db, blog=blog, user_id=user_id)
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Vue frontend URL ထည့်လို့ရတယ်
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
